@@ -1,0 +1,16 @@
+{
+  "name": "chat-room-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf app",
+    "build": "esbuild index.js --bundle --minify --outdir=app",
+    "postbuild": "cp index.html app/index.html && cp index.css app/index.css"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.8.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.11"
+  }
+}
