@@ -8,7 +8,7 @@ const RoomDB = lmdb.open("rooms");
 RoomDB.put("Global", null);
 
 router.get("/all", (req, res) => {
-  res.json(RoomDB.keys());
+  res.json(RoomDB.getRange());
 });
 
 router.get("/:roomName/has-password", (req, res) => {

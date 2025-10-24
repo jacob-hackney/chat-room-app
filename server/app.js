@@ -3,11 +3,16 @@ import lmdb from "lmdb";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import roomRouter from "./roomRoutes";
+import roomRouter from "./roomRoutes.js";
 
 const app = express();
 app.use(express.json());
 app.use("/rooms", roomRouter);
+
+app.use((req, res, next) => {
+  console.log(`Path ${req.url} accessed by ${req.ip}`);
+  next();
+})
 
 const UserDB = lmdb.open("users");
 

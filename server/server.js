@@ -9,7 +9,7 @@ configDotenv({ debug: false, path: "./.env" });
 const server = createServer(app);
 
 // #region Socket Server
-const io = new SocketServer(httpServer);
+const io = new SocketServer(server);
 
 io.use((socket, next) => {
   const username = socket.handshake.auth.username;
@@ -57,6 +57,10 @@ io.on("connect", (socket) => {
 });
 // #endregion
 
-server.listen(process.env.SERVER_PORT, /* process.env.SERVER_HOST, */ () => {
-  console.log(`Server listening on port ${process.env.SERVER_PORT}`);
-});
+// Firebase URL: https://3000-firebase-chat-room-app-1761158009896.cluster-a6fboot2vrctkwj6dpuoyj5s7y.cloudworkstations.dev/
+server.listen(
+  process.env.SERVER_PORT,
+  /* process.env.SERVER_HOST, */ () => {
+    console.log(`Server listening on port ${process.env.SERVER_PORT}`);
+  }
+);
